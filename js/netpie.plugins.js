@@ -145,12 +145,26 @@ if (typeof microgear === "undefined") {
         microgear[settings.microgearRef] = self.mg;
 
         self.mg.on('message', function(topic,msg) {
-            if (topic && msg) {
-                data[topic] = msg;
+            if (currentSettings.json_data) {
+              //console.log("DATA", data);
+              //console.log("==");
+              //console.log("TOPIC", topic);
+              //console.log("MSG", msg);
+              //console.log("==");
+              try {
+                data[topic] = topic;
+                data.msg =JSON.parse(msg) ;
+                data[data.msg.d.myName] = JSON.parse(msg) ;
                 updateCallback(data);
+                } catch(ex) { console.log(ex) };
+              }
+              else {
+                if (topic && msg) {
+                  data[topic] = msg;
+                  updateCallback(data);
+                }
             }
         });
-
         self.mg.on('connected', function() {
             initSubscribe(settings.topics.trim().split(','), true);
             if (gconf.alias) {
