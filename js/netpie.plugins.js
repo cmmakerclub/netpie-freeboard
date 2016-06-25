@@ -26,14 +26,14 @@ if (typeof microgear === "undefined") {
             {
                 "name"         : "key",
                 "display_name" : "Key",
-                "type"         : "text", 
+                "type"         : "text",
                 "description"  : "Key",
                 "required"     : true
             },
             {
                 "name"        : "secret",
                 "display_name" : "Secret",
-                "type"         : "text", 
+                "type"         : "text",
                 "description"  : "Secret",
                 "type"         : "text",
                 "required"     : true
@@ -41,7 +41,7 @@ if (typeof microgear === "undefined") {
             {
                 "name"         : "alias",
                 "display_name" : "Device Alias",
-                "type"         : "text", 
+                "type"         : "text",
                 "description"  : "A nick name of this freeboard that other device can chat to",
                 "type"         : "text",
                 "required"     : false
@@ -49,7 +49,7 @@ if (typeof microgear === "undefined") {
             {
                 "name"         : "microgearRef",
                 "display_name" : "Microgear Reference",
-                "type"         : "text", 
+                "type"         : "text",
                 "description"  : "Define a reference for a microgear of this datasource. For example if you set this to 'mygear' you can access the microgear object by microgear['mygear']",
                 "type"         : "text",
                 "required"     : false
@@ -57,17 +57,24 @@ if (typeof microgear === "undefined") {
             {
                 "name"         : "topics",
                 "display_name" : "Subscribed Topics",
-                "type"         : "text", 
+                "type"         : "text",
                 "description"  : "Topics of the messages that this datasource will consume, the default is /# which means all messages in this app ID.",
                 "default_value": "/#",
                 "required"     : false
+            },
+            {
+                "name"        : "json_data",
+                "display_name": "JSON messages?",
+                "type"        : "boolean",
+                "description" : "If the messages on your topic are in JSON format they will be parsed so the individual fields can be used in freeboard widgets",
+                "default_value": false
             },
             {
                 "name"          : "onConnectedAction",
                 "display_name"  : "onConnected Action",
                 "type"          : "text",
                 "description"   : "JS code to run after a microgear datasource is connected"
-            }            
+            }
 
         ],
 
