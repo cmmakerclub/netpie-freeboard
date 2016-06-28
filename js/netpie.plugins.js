@@ -145,10 +145,11 @@ if (typeof microgear === "undefined") {
         microgear[settings.microgearRef] = self.mg;
 
         self.mg.on('message', function(topic,msg) {
+            var data_title;
             if (currentSettings.json_data) {
               try {
-                data[topic] = topic;
-                data[data.msg.d.myName] = JSON.parse(msg) ;
+                data_title = data[data.msg && data.msg.d && data.msg.d.myName]; 
+                data[data_title ||  "gear"] = JSON.parse(msg);
                 updateCallback(data);
                 } catch(ex) { console.log(ex) };
               }
