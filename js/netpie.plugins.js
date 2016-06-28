@@ -64,7 +64,7 @@ if (typeof microgear === "undefined") {
             },
             {
                 "name"        : "json_data",
-                "display_name": "JSON messages?",
+                "display_name": "CMMC JSON messages?",
                 "type"        : "boolean",
                 "description" : "If the messages on your topic are in JSON format they will be parsed so the individual fields can be used in freeboard widgets",
                 "default_value": false
@@ -146,14 +146,8 @@ if (typeof microgear === "undefined") {
 
         self.mg.on('message', function(topic,msg) {
             if (currentSettings.json_data) {
-              //console.log("DATA", data);
-              //console.log("==");
-              //console.log("TOPIC", topic);
-              //console.log("MSG", msg);
-              //console.log("==");
               try {
                 data[topic] = topic;
-                data.msg =JSON.parse(msg) ;
                 data[data.msg.d.myName] = JSON.parse(msg) ;
                 updateCallback(data);
                 } catch(ex) { console.log(ex) };
